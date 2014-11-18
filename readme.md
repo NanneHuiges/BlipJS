@@ -1,5 +1,12 @@
 An easy way to get stuff from the Blipfoto API within a browser.
 
+# V3 warning.
+While this version is specifically made for version 3 of the api, it is badly (if at all)
+tested. The first steps seem to have worked for the search function, but as the parameters,
+URI's and / or other elements of all resource may have been changed, there is no guarantee
+of suitability for anything.
+Will keep testing / adding though
+
 ## Set up:
 
 	<script src='BlipJS.js'></script>
