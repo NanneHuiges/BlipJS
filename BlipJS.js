@@ -1,8 +1,12 @@
 /*****
 
-BlipJS v1.0
+BlipJS v2.0
 
 A dead-simple, client-side way to grab info via the Blipfoto API.
+
+Updated to support v3 of the API.
+tested for 
+* search
 
 Copyright 2011 Graham Bradley
 This work is licensed under a Creative Commons Attribution-Noncommercial 3.0
@@ -16,8 +20,7 @@ Unported License (http://creativecommons.org/licenses/by-nc/3.0/).
 		me = function(key, conf){
 			this.key = key;
 			this.conf = conf || {
-				baseURL : 'http://api.blipfoto.com/',
-				version : 2,
+				baseURL : 'http://api.blipfoto.com/v3',
 				test : 0
 				};
 				
@@ -92,7 +95,7 @@ Unported License (http://creativecommons.org/licenses/by-nc/3.0/).
 		_request : function(method, resource, opt){
 		
 			var opt = opt || {},
-				url = this.conf.baseURL+method+'/'+resource+'/?'+this._getParams(opt.params || {});
+				url = this.conf.baseURL+'/'+resource+'.json?'+this._getParams(opt.params || {});
 			
 			me._sendRequest(this._requestID++, url, opt);
 			},
@@ -100,8 +103,6 @@ Unported License (http://creativecommons.org/licenses/by-nc/3.0/).
 		_getParams : function(params){
 			
 			params.api_key = this.key;
-			params.version = this.conf.version;
-			params.format = 'JSON';
 				
 			if (this.test){
 				defaults.test = 1;
